@@ -1,0 +1,43 @@
+name: assignment
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo to runner
+        uses: actions/checkout@v3
+      - name: installing java
+        uses: actions/setup-java@v2
+        with:
+          distribution : 'zulu'
+          java-version : 11
+      - name: build using maven
+        run: |
+          mvn clean install
+          echo "clean-installed"
+          mvn clean package
+          echo "clean-packaged"
+          mvn spring-boot:run
+          echo "jar file is in target directory"
+  #        java -jar target/*.jar
+  #        echo "starting the application"
+      - uses: actions/upload-artifact@v3
+        with:
+          name: uploading artifacts
+          path: target/*
+
+
+        
+      
+
+
+
+
