@@ -19,6 +19,10 @@ jobs:
         with:
           distribution : 'zulu'
           java-version : 11
+
+      - name: cache-maven
+        uses: actions/cache@v1
+
       - name: build using maven
         run: |
           mvn clean install
