@@ -35,7 +35,12 @@ jobs:
   #        echo "starting the application"
       - name: creating new branch
         run: |
+          git config --local user.name prasad
+          git config --local user.email prasadpasam6@gmail.com
+          git add .
+          git commit -m "artifacts_1"
           git checkout -b artefacts-store
+          git push origin artefacts-store
       - uses: actions/upload-artifact@v3
         with:
           name: uploading artifacts
