@@ -19,26 +19,16 @@ jobs:
         with:
           distribution : 'zulu'
           java-version : 11
-
-#      - name: cache-maven
-#        uses: actions/cache@v1
-
       - name: build using maven
         run: |
           mvn clean install
           echo "clean-installed"
           mvn clean package
           echo "clean-packaged"
-#          mvn spring-boot:run
-#          echo "jar file is in target directory"
-  #        java -jar target/*.jar
-  #        echo "starting the application"
       - name: creating new branch
         run: |
           git config --local user.name prasad
           git config --local user.email prasadpasam6@gmail.com
-#          git add .
-#          git commit -m "artifacts_1"
           git checkout -b artefacts-store
           git push origin artefacts-store
       - uses: actions/upload-artifact@v3
