@@ -37,8 +37,8 @@ jobs:
         run: |
           git config --local user.name prasad
           git config --local user.email prasadpasam6@gmail.com
-          git add .
-          git commit -m "artifacts_1"
+#          git add .
+#          git commit -m "artifacts_1"
           git checkout -b artefacts-store
           git push origin artefacts-store
       - uses: actions/upload-artifact@v3
