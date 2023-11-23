@@ -20,8 +20,8 @@ jobs:
           distribution : 'zulu'
           java-version : 11
 
-      - name: cache-maven
-        uses: actions/cache@v1
+#      - name: cache-maven
+#        uses: actions/cache@v1
 
       - name: build using maven
         run: |
@@ -29,10 +29,13 @@ jobs:
           echo "clean-installed"
           mvn clean package
           echo "clean-packaged"
-          mvn spring-boot:run
-          echo "jar file is in target directory"
+#          mvn spring-boot:run
+#          echo "jar file is in target directory"
   #        java -jar target/*.jar
   #        echo "starting the application"
+      - name: creating new branch
+        run: |
+          git checkout -b artefacts-store
       - uses: actions/upload-artifact@v3
         with:
           name: uploading artifacts
